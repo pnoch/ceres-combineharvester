@@ -69,7 +69,7 @@ def get_all_coins_default_constants(coin_names=COIN_NAMES):
 
 
 # def get_mining_coin_names(root_path: Path=DEFAULT_CERES_ROOT_PATH):
-#     farmer_configs = load_config_cli(root_path, filename="coins_config.yaml", sub_config="farmer_machine")
+#     farmer_configs = load_config_cli(root_path, filename="coins_config.yaml", sub_config="ceres_configuration")
 
 #     coin_names = []
 

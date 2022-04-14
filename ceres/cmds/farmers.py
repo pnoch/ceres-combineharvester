@@ -31,9 +31,9 @@ def show_cmd(
 ):
     root_path  = ctx.obj["root_path"]
     ceres_config = load_config(root_path, filename="coins_config.yaml")
-    farmer_machine = ceres_config["farmer_machine"]
+    ceres_configuration = ceres_config["ceres_configuration"]
 
-    if not farmer_machine:
+    if not ceres_configuration:
         print("No Farmer Peer set")
         print("run ceres farmers add to add new farmer peers")
         return 
@@ -45,7 +45,7 @@ def show_cmd(
 
     print("-" * 50)
     print("All Farmer Peers:")
-    for farmer in farmer_machine:
+    for farmer in ceres_configuration:
         print(f"Famer Peer")
         host = farmer["farmer_peer"]["address"]
         coins = farmer["farmer_peer"]["coins"]
@@ -103,12 +103,12 @@ def add_cmd(
 
     ceres_config = load_config(DEFAULT_CERES_ROOT_PATH, filename="coins_config.yaml")
 
-    farmer_machine = ceres_config["farmer_machine"]
+    ceres_configuration = ceres_config["ceres_configuration"]
 
     # farmer_peer = None
 
     # host exists
-    if not farmer_machine:
+    if not ceres_configuration:
     #   farmer_peer = {
     #       "address": host,
     #     #   "address": format(input_host),
@@ -120,7 +120,7 @@ def add_cmd(
               "coins": coins
           }
       }
-      farmer_machine.append(farmer_peer)
+      ceres_configuration.append(farmer_peer)
       save_config(root_path, "coins_config.yaml", ceres_config)
       print(f"{coins} added to farmer peer {host}")
       ctx.invoke(show_cmd)
@@ -129,7 +129,7 @@ def add_cmd(
 
     # new host
     host_exits = False
-    for farmer in farmer_machine:
+    for farmer in ceres_configuration:
         farmer_peer = farmer["farmer_peer"]
         farmer_host = ip_address(farmer_peer["address"])
         if farmer_host == input_host:
@@ -149,7 +149,7 @@ def add_cmd(
               "coins": coins
           }
       }
-      farmer_machine.append(farmer_peer)
+      ceres_configuration.append(farmer_peer)
       save_config(root_path, "coins_config.yaml", ceres_config)
       print(f"{coins} added to farmer peer {host}")
       ctx.invoke(show_cmd)
@@ -159,7 +159,7 @@ def add_cmd(
     #     "address": format(input_host),
     #     "coins": coin
     # }  
-    # farmer_machine.append(
+    # ceres_configuration.append(
     #     {
     #         "farmer_peer": farmer_peer
     #     }
@@ -191,19 +191,19 @@ def remove_cmd(
     print("Coins: ", coins)
 
     ceres_config = load_config(DEFAULT_CERES_ROOT_PATH, filename="coins_config.yaml")
-    farmer_machine = ceres_config["farmer_machine"]
+    ceres_configuration = ceres_config["ceres_configuration"]
 
 
     print("-" * 50)
     print("Ceres Farmers Remove:")
     print("")
 
-    if not farmer_machine:
+    if not ceres_configuration:
         print(f"Farmer peer is empty, nothing to remove.")
         return
     
     host_found = False
-    for farmer in farmer_machine:
+    for farmer in ceres_configuration:
         farmer_peer = farmer["farmer_peer"]
         farmer_host = ip_address(farmer_peer["address"])
 
@@ -215,7 +215,7 @@ def remove_cmd(
                 if c in mining_coins:
                     farmer_peer["coins"].remove(c)
                     if not farmer_peer["coins"]:
-                        farmer_machine.remove(farmer)
+                        ceres_configuration.remove(farmer)
                     save_config(root_path, "coins_config.yaml", ceres_config)
                     print(f"{c} removed from farmer host: {farmer_host}")
                     coins_to_remove.remove(c)
@@ -235,17 +235,17 @@ def remove_cmd(
 # def check_conflict(host, coins):
 def detect_conflict():
     ceres_config = load_config(DEFAULT_CERES_ROOT_PATH, filename="coins_config.yaml")
-    farmer_machine = ceres_config["farmer_machine"]
+    ceres_configuration = ceres_config["ceres_configuration"]
 
-    if not farmer_machine:
+    if not ceres_configuration:
         return False
     
     err = False
 
-    detect_valid_name(farmer_machine)
+    detect_valid_name(ceres_configuration)
     
     try:
-        detect_duplicated_hosts(farmer_machine)
+        detect_duplicated_hosts(ceres_configuration)
     except ValueError as e:
         err = True
         cnt = e.args[0]
@@ -255,7 +255,7 @@ def detect_conflict():
     #     # return -1
     
     try:
-        detect_duplicated_coins(farmer_machine)
+        detect_duplicated_coins(ceres_configuration)
     except ValueError as e:
         err = True
         err = e.args[0]
@@ -273,8 +273,8 @@ def detect_conflict():
     
 
 
-    # for farmer in farmer_machine:
-    #     farmer_peer = farmer_machine["farmer_peer"]
+    # for farmer in ceres_configuration:
+    #     farmer_peer = ceres_configuration["farmer_peer"]
     #     farmer_host = farmer_peer["address"]
     #     mining_coins = farmer_peer["coins"]
     #     duplicated_coins = [c for c in coins if c in mining_coins]
@@ -309,10 +309,10 @@ def detect_duplicated_hosts(famer_machine):
 
 
 
-def detect_duplicated_coins(farmer_machine):
+def detect_duplicated_coins(ceres_configuration):
     cnt = Counter()
 
-    for farmer in farmer_machine:
+    for farmer in ceres_configuration:
         coins = farmer["farmer_peer"]["coins"]
         for name in coins:
             cnt[name] += 1
@@ -332,7 +332,7 @@ def detect_duplicated_coins(farmer_machine):
 
     for name in cnt:
         hosts = []
-        for farmer in farmer_machine:
+        for farmer in ceres_configuration:
             coins = farmer["farmer_peer"]["coins"]
             if name in coins:
                 hosts.append(farmer["farmer_peer"]["address"])
@@ -340,11 +340,11 @@ def detect_duplicated_coins(farmer_machine):
     
     raise ValueError(err)
 
-def detect_valid_name(farmer_machine):
+def detect_valid_name(ceres_configuration):
     valid_names = get_valid_coin_names()
     not_supported_names = []
 
-    for farmer in farmer_machine:
+    for farmer in ceres_configuration:
         coins = farmer["farmer_peer"]["coins"]
         unsupported_names = [name for name in coins if name not in valid_names]
         not_supported_names.extend(unsupported_names)

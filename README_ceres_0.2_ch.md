@@ -159,7 +159,7 @@ coins_config.yaml 默认内容的头部， 是这样的:
 #  Edit your Farmer machine IP address below
 #  Add coins name to it's farmer peer's coins part
 #  Only Use coin names under coins supported section below
-farmer_machine:
+ceres_configuration:
     - farmer_peer: 
         address: localhost
         coins:
@@ -194,10 +194,10 @@ plot_directories: []
 
 - 192.168.1.200 币种为 spare, kale
 
-修改coins_config.yaml中， farmer_machine的内容, **注意缩进 和 - 符号**
+修改coins_config.yaml中， ceres_configuration的内容, **注意缩进 和 - 符号**
 
 ```
-farmer_machine:
+ceres_configuration:
 
 - farmer_peer: 
   address: 192.168.1.100
@@ -456,7 +456,7 @@ coin_names:
    比如给 192.168.1.100添加 silicoin
    
    ```
-    farmer_machine:
+    ceres_configuration:
         - farmer_peer: 
             address: 192.168.1.100
             coins:

@@ -7,7 +7,7 @@
 #  Edit your Farmer machine IP address below
 #  Add coins name to it's farmer peer's coins part
 #  Only Use coin names under coins supported section below
-farmer_machine:
+ceres_configuration:
     - farmer_peer: 
         address: localhost
         coins:
