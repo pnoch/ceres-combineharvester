@@ -64,9 +64,8 @@ class PlotRefreshResult:
 
 def get_plot_directories(root_path: Path, config: Dict = None) -> List[str]:
     if config is None:
-        config = load_config(root_path, "config.yaml")
-    return config["harvester"]["plot_directories"]
-
+        config = load_config(root_path, "coins_config.yaml")
+    return config["plot_directories"]
 
 def get_plot_filenames(root_path: Path) -> Dict[Path, List[Path]]:
     # Returns a map from directory to a list of all plots in the directory
