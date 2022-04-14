@@ -150,17 +150,6 @@ class HarvesterAPI:
                                 )
                                 continue
 
-                            # Look up local_sk from plot to save locked memory
-                            (
-                                pool_public_key_or_puzzle_hash,
-                                farmer_public_key,
-                                local_master_sk,
-                            ) = parse_plot_info(plot_info.prover.get_memo())
-                            local_sk = master_sk_to_local_sk(local_master_sk)
-                            include_taproot = plot_info.pool_contract_puzzle_hash is not None
-                            plot_public_key = ProofOfSpace.generate_plot_public_key(
-                                local_sk.get_g1(), farmer_public_key, include_taproot
-                            )
                             responses.append(
                                 (
                                     quality_str,
@@ -168,7 +157,7 @@ class HarvesterAPI:
                                         sp_challenge_hash,
                                         plot_info.pool_public_key,
                                         plot_info.pool_contract_puzzle_hash,
-                                        plot_public_key,
+                                        plot_info.plot_public_key,
                                         uint8(plot_info.prover.get_size()),
                                         proof_xs,
                                     ),
@@ -206,23 +195,17 @@ class HarvesterAPI:
         total = 0
         with self.harvester.plot_manager:
             for try_plot_filename, try_plot_info in self.harvester.plot_manager.plots.items():
-                try:
-                    if try_plot_filename.exists():
-                        # Passes the plot filter (does not check sp filter yet though, since we have not reached sp)
-                        # This is being executed at the beginning of the slot
-                        total += 1
-                        if ProofOfSpace.passes_plot_filter(
-                            # coin_constants,
-                            current_constants,
-                            try_plot_info.prover.get_id(),
-                            new_challenge.challenge_hash,
-                            new_challenge.sp_hash,
-                        ):
-                            passed += 1
-                            awaitables.append(lookup_challenge(try_plot_filename, try_plot_info, current_constants))
-                            # awaitables.append(lookup_challenge(try_plot_filename, try_plot_info))
-                except Exception as e:
-                    self.harvester.log.error(f"Error plot file {try_plot_filename} may no longer exist {e}")
+                # Passes the plot filter (does not check sp filter yet though, since we have not reached sp)
+                # This is being executed at the beginning of the slot
+                total += 1
+                if ProofOfSpace.passes_plot_filter(
+                    current_constants,
+                    try_plot_info.prover.get_id(),
+                    new_challenge.challenge_hash,
+                    new_challenge.sp_hash,
+                ):
+                    passed += 1
+                    awaitables.append(lookup_challenge(try_plot_filename, try_plot_info,current_constants))
 
         # Concurrently executes all lookups on disk, to take advantage of multiple disk parallelism
         total_proofs_found = 0

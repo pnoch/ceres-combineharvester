@@ -8,7 +8,6 @@ class HarvesterRpcApi:
     def __init__(self, harvester: Harvester):
         self.service = harvester
         self.service_name = "ceres_harvester"
-        # self.service_name = "chia_harvester"
 
     def get_routes(self) -> Dict[str, Callable]:
         return {

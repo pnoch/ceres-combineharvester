@@ -18,5 +18,6 @@ class NPC(Streamable):
     def condition_dict(self):
         d: Dict[ConditionOpcode, List[ConditionWithArgs]] = {}
         for opcode, l in self.conditions:
+            assert opcode not in d
             d[opcode] = l
         return d
