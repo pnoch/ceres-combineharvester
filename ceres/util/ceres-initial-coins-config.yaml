@@ -1,121 +1,159 @@
-ceres_configuration:
-    - harvester:
-        coins:
-          - aedgecoin
-          - flax
-          - maize
-          - hddcoin
-          - staicoin
-          - nchain
-          - stor
-          - btcgreen
-          - skynet
-          - tranzact
-          - cryptodoge
-
+ceres_configuration: []
 plot_directories: []
-
-# ************************************************************************************************************
-# ==================================================
-#     *** DON'T mess up ANY configure below ***
-# ==================================================
-
-# Supported Coin Names
-# DON'T edit ANY coin names below
 coin_names:
-  - chia
-  - flax
-  - spare
-  - silicoin
-  - flora 
-  - chiarose
-  - socks 
-  - apple 
-  - kale 
-  - chaingreen
-  - seno
-  - equality 
-  - greendoge 
-  - tad 
-  - dogechia
-  - maize 
-  - wheat
-  - taco
-  - covid
-  - melati
-  - cactus
-  - hddcoin
-  - avocado
-  - cryptodoge
-  - sector
-  - nchain
-  - btcgreen
-  - cannabis
-  - scam
-  - fork
-  - lucky
-
-# DONT edit ANYTHING below
+- chia
+- flax
+- spare
+- silicoin
+- flora
+- socks
+- apple
+- kale
+- greendoge
+- tad
+- dogechia
+- maize
+- wheat
+- taco
+- covid
+- melati
+- cactus
+- hddcoin
+- avocado
+- sector
+- nchain
+- btcgreen
+- cannabis
+- scam
+- fork
+- olive
+- pipscoin
+- beer
+- cunt
+- littlelambocoin
+- stor
+- beet
+- lotus
+- mint
+- kiwi
+- mogua
+- tranzact
+- peas
+- salvia
+- staicoin
+- melati
+- cryptodoge
+- venidium
+- goldcoin
+- aedgecoin
+- skynet
+- ethgreen
+- melon
+- rolls
+- shibgreen
+- kujenga
 network_ids:
   chia:
-    network_id: "mainnet"
+    network_id: mainnet
   flax:
-    network_id: "flax-mainnet"
-  spare: 
-    network_id: "mainnet"
-  silicoin:
-    network_id: "testnet"
-  flora: 
-    network_id: "mainnet"
-  chiarose: 
-    network_id: "mainnet"
-  socks: 
-    network_id: "mainnet"
-  apple: 
-    network_id: "mainnet"
-  kale: 
-    network_id: "kale-mainnet"
-  chaingreen:
-    network_id: "mainnet"
-  seno:
-    network_id: "mainnet"
-  equality: 
-    network_id: "equality-mainnet"
+    network_id: flax-mainnet
+  spare:
+    network_id: mainnet
+  silicoin: 
+    network_id: testnet
+  flora:
+    network_id: mainnet
+  socks:
+    network_id: mainnet
+  apple:
+    network_id: mainnet
+  kale:
+    network_id: kale-mainnet
   greendoge: 
-    network_id: "mainnet"
-  tad: 
-    network_id: "mainnet"
+    network_id: mainnet
+  tad:
+    network_id: mainnet
   dogechia:
-    network_id: "dogechia-mainnet"
-  maize: 
-    network_id: "mainnet"
+    network_id: dogechia-mainnet
+  maize:
+    network_id: mainnet
   wheat:
-    network_id: "mainnet"
+    network_id: mainnet
   taco:
-    network_id: "taco-mainnet"
+    network_id: taco-mainnet
   covid:
-    network_id: "covid-mainnet"
+    network_id: covid-mainnet
   melati:
-    network_id: "mainnet"
+    network_id: mainnet
   cactus:
-    network_id: "mainnet"
+    network_id: mainnet
   hddcoin:
-    network_id: "mainnet"
+    network_id: mainnet
   avocado:
-    network_id: "mainnet"
-  cryptodoge:
-    network_id: "cryptodoge-mainnet"
+    network_id: mainnet
   sector:
-    network_id: "mainnet"
+    network_id: mainnet
   nchain:
-    network_id: "ext9"
+    network_id: ext9
   btcgreen:
-    network_id: "btcgreen-mainnet"
+    network_id: btcgreen-mainnet
   cannabis:
-    network_id: "mainnet"
+    network_id: mainnet
   scam:
-    network_id: "scam-mainnet"
+    network_id: scam-mainnet
   fork:
-    network_id: "fork-mainnet"
-  lucky:
-    network_id: "mainnet"
+    network_id: fork-mainnet
+  olive:
+    network_id: olive-mainnet
+  pipscoin:
+    network_id: pipscoin-mainnet
+  beer:
+    network_id: beer-mainnet
+  cunt:
+    network_id: cunt-mainnet
+  littlelambocoin:
+    network_id: mainnet
+  stor:
+    network_id: mainnet
+  beet:
+    network_id: beet-mainnet
+  lotus:
+    network_id: mainnet
+  mint:
+    network_id: mint-mainnet
+  kiwi:
+    network_id: mainnet
+  mogua:
+    network_id: mogua-mainnet
+  tranzact:
+    network_id: mainnet
+  peas:
+    network_id: mainnet
+  salvia:
+    network_id: mainnet
+  staicoin:
+    network_id: staicoin-mainnet
+  taco:
+    network_id: taco-mainnet
+  melati:
+    network_id: mainnet
+  cryptodoge:
+    network_id: cryptodoge-mainnet
+  venidium:
+    network_id: mainnet
+  goldcoin:
+    network_id: goldcoin-mainnet
+  aedgecoin:
+    network_id: mainnet
+  skynet:
+    network_id: mainnet
+  ethgreen:
+    network_id: ethgreen-mainnet
+  melon:
+    network_id: melon-mainnet
+  rolls:
+    network_id: mainnet
+  shibgreen:
+    network_id: shibgreen-mainnet
+  kujenga:
+    network_id: mainnet
