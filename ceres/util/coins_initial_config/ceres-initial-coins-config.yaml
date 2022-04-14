@@ -8,40 +8,19 @@
 #  Add coins name to it's farmer peer's coins part
 #  Only Use coin names under coins supported section below
 ceres_configuration:
-    - farmer_peer: 
-        address: localhost
+    - farmer_peer:
         coins:
-          - chia
+          - aedgecoin
           - flax
-
-
-    # Farmer Peer SAMPLE
-    # You can add as many farmer peers as you have
-    # Note the indent
-
-    # - farmer_peer: 
-    #     address: 192.168.1.100
-    #     coins:
-    #       - flora
-    #       - kale
-
-    # - farmer_peer: 
-    #     address: 192.168.1.101
-    #     coins:
-    #       - spare
-    #       - chaingreen
-
-
-# path of your plot files
-plot_directories: []
-
-
-
-
-
-
-
-
+          - maize
+          - hddcoin
+          - staicoin
+          - nchain
+          - stor
+          - btcgreen
+          - skynet
+          - tranzact
+          - cryptodoge
 
 # ************************************************************************************************************
 # ==================================================

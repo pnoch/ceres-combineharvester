@@ -1,3 +1,4 @@
+from ceres.util.start_harvester_funcs import get_harvester_connect_peers
 from ceres.server.start_harvester_service import run_harvester_service
 import os
 import pathlib
@@ -29,7 +30,7 @@ def service_kwargs_for_harvester(
     consensus_constants: ConsensusConstants,
 ) -> Dict:
 
-    connect_peers = [PeerInfo(config["farmer_peer"]["host"], config["farmer_peer"]["port"])]
+    connect_peers = get_harvester_connect_peers(root_path)
 
     overrides = config["network_overrides"]["constants"][config["selected_network"]]
     updated_constants = consensus_constants.replace_str_to_bytes(**overrides)
