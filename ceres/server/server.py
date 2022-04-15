@@ -35,7 +35,7 @@ def ssl_context_for_server(
     private_cert_path: Path,
     private_key_path: Path,
     *,
-    check_permissions: bool = false,
+    check_permissions: bool = False,
     log: Optional[logging.Logger] = None,
 ) -> Optional[ssl.SSLContext]:
     if check_permissions:
@@ -64,7 +64,7 @@ def ssl_context_for_client(
     private_cert_path: Path,
     private_key_path: Path,
     *,
-    check_permissions: bool = True,
+    check_permissions: bool = False,
     log: Optional[logging.Logger] = None,
 ) -> Optional[ssl.SSLContext]:
     if check_permissions:
