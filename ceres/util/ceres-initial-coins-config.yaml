@@ -1,18 +1,18 @@
 farmer_machine:
-    - farmer_peer: 
-        address: localhost
-        coins:
-          - aedgecoin
-          - flax
-          - maize
-          - hddcoin
-          - staicoin
-          - nchain
-          - stor
-          - btcgreen
-          - skynet
-          - tranzact
-          - cryptodoge
+- farmer_peer:
+    address: 10.0.1.21
+    coins:
+    - aedgecoin
+    - flax
+    - maize
+    - hddcoin
+    - staicoin
+    - nchain
+    - stor
+    - btcgreen
+    - skynet
+    - tranzact
+    - cryptodoge
 
 plot_directories: []
 coin_names:
