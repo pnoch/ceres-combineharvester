@@ -7,8 +7,9 @@
 #  Edit your Farmer machine IP address below
 #  Add coins name to it's farmer peer's coins part
 #  Only Use coin names under coins supported section below
-ceres_configuration:
-    - farmer_peer:
+farmer_machine:
+    - farmer_peer: 
+        address: localhost
         coins:
           - aedgecoin
           - flax
@@ -23,6 +24,14 @@ ceres_configuration:
           - cryptodoge
 
 plot_directories: []
+
+
+
+
+
+
+
+
 
 # ************************************************************************************************************
 # ==================================================

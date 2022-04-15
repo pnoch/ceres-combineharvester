@@ -11,23 +11,22 @@ from ceres.server.server import ssl_context_for_client
 def get_harvester_connect_peers(root_path) -> Dict:
 
     connect_peers = {}
-    
-    farmer_config = load_config(root_path, "config.yaml")
-    
-    farmer_ip = farmer_config["farmer_peer"]["host"]
 
-    coin_config = load_config(root_path, filename="coins_config.yaml", sub_config="ceres_configuration")
+    farmer_configs = load_config(root_path, filename="coins_config.yaml", sub_config="farmer_machine")
+    for farmer in farmer_configs:
+        coins = farmer["farmer_peer"]["coins"]
 
-    coins = coin_config["farmer_peer"]["coins"]
-    
-    # TODO: should check duplicated coin name
-    for coin in coins:
-        coin_root_path = get_coin_root_path(coin)
-        coin_harvester_config = get_coin_config(coin, "harvester")
-        farmer_port = coin_harvester_config["farmer_peer"]["port"]
-        peer_info = PeerInfo(farmer_ip, farmer_port)
+        farmer_peer = farmer["farmer_peer"]
+        farmer_ip = farmer_peer["address"]
 
-        connect_peers[coin] = peer_info
+        # TODO: should check duplicated coin name
+        for coin in coins:
+            coin_root_path = get_coin_root_path(coin)
+            coin_harvester_config = get_coin_config(coin, "harvester")
+            farmer_port = coin_harvester_config["farmer_peer"]["port"]
+            peer_info = PeerInfo(farmer_ip, farmer_port)
+
+            connect_peers[coin] = peer_info
     
     return connect_peers
 

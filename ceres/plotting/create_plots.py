@@ -144,7 +144,7 @@ async def create_plots(
     args, keys: PlotKeys, root_path, use_datetime=True, test_private_keys: Optional[List] = None
 ) -> Tuple[Dict[bytes32, Path], Dict[bytes32, Path]]:
 
-    config_filename = config_path_for_filename(root_path, "config.yaml")
+    config_filename = config_path_for_filename(root_path, "coins_config.yaml")
     config = load_config(root_path, config_filename)
 
     if args.tmp2_dir is None:
@@ -230,7 +230,7 @@ async def create_plots(
         full_path: Path = args.final_dir / filename
 
         resolved_final_dir: str = str(Path(args.final_dir).resolve())
-        plot_directories_list: str = config["harvester"]["plot_directories"]
+        plot_directories_list: str = config["plot_directories"]
 
         if args.exclude_final_dir:
             log.info(f"NOT adding directory {resolved_final_dir} to harvester for farming")

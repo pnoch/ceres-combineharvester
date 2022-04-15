@@ -33,8 +33,8 @@ def ceres_update_cmd(ctx: click.Context, sub_configs: List[str]):
 
     user_defined_coins_config: Dict = load_config(DEFAULT_CERES_ROOT_PATH, "coins_config.yaml")
 
-    if user_defined_coins_config.get("ceres_configuration"):
-        ceres_all_coins_config_data["ceres_configuration"] = user_defined_coins_config["ceres_configuration"]
+    if user_defined_coins_config.get("farmer_machine"):
+        ceres_all_coins_config_data["farmer_machine"] = user_defined_coins_config["farmer_machine"]
     
     if user_defined_coins_config.get("plot_directories"):
         ceres_all_coins_config_data["plot_directories"] = user_defined_coins_config["plot_directories"]

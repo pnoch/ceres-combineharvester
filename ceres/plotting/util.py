@@ -88,7 +88,7 @@ def add_plot_directory(root_path: Path, str_path: str) -> Dict:
 
 def remove_plot_directory(root_path: Path, str_path: str) -> None:
     log.debug(f"remove_plot_directory {str_path}")
-    config = load_config(root_path, "config.yaml")
+    config = load_config(root_path, "coins_config.yaml")
     str_paths: List[str] = get_plot_directories(root_path, config)
     # If path str matches exactly, remove
     if str_path in str_paths:
@@ -99,8 +99,8 @@ def remove_plot_directory(root_path: Path, str_path: str) -> None:
     if Path(str_path).resolve() in new_paths:
         new_paths.remove(Path(str_path).resolve())
 
-    config["harvester"]["plot_directories"] = [str(np) for np in new_paths]
-    save_config(root_path, "config.yaml", config)
+    config["plot_directories"] = [str(np) for np in new_paths]
+    save_config(root_path, "coins_config.yaml", config)
 
 
 def remove_plot(path: Path):

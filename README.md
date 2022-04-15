@@ -150,7 +150,7 @@ Totally initialization has three steps,  read instruction detail below
    by default top lines of coins_config.yaml looks like this
    
    ```
-   ceres_configuration:
+   farmer_machine:
        - farmer_peer: 
            address: localhost
            coins:
@@ -169,7 +169,7 @@ open ~/.ceres/mainnet/config/coins_config.yaml and enter your farmer info like b
 **NOTE** the indent and "-" symbol
 
 ```
-ceres_configuration:
+farmer_machine:
 
 - farmer_peer: 
   address: 192.168.1.100
@@ -421,7 +421,7 @@ open ~/.ceres/mainnet/config/coins_config.yaml
 1. add silicoin to farmer_peer:
 
 ```
- ceres_configuration:
+ farmer_machine:
      - farmer_peer: 
          address: 192.168.1.100
          coins:

@@ -275,7 +275,7 @@ class BlockTools:
         plot_manager.stop_refreshing()
         self.plots: Dict[Path, PlotInfo] = plot_manager.plots
         # create_plots() updates plot_directories. Ensure we refresh our config to reflect the updated value
-        self._config["harvester"]["plot_directories"] = load_config(self.root_path, "config.yaml", "harvester")[
+        self._config["plot_directories"] = load_config(self.root_path, "coins_config.yaml")[
             "plot_directories"
         ]
 

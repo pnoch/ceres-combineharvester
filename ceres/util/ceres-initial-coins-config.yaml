@@ -1,4 +1,4 @@
-ceres_configuration: []
+farmer_machine: []
 plot_directories: []
 coin_names:
 - chia
